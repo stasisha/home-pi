@@ -9,8 +9,6 @@ read -p 'Would you like to install Docker? [y/n]: ' docker
 read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
 
-
-apt-get update
 if [[ "$ID" == "raspbian"* ]]; then
     read -p 'Would you like use University of Oxford Mirror? [y/n]: ' oxfordMirror
     
@@ -31,14 +29,14 @@ else
 fi
 
 if [  "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' || "$oxfordMirror" == 'y' ] || [ "$oxfordMirror" == 'Y']; then
-    apt-get upgrade
+    apt-get update
 elif
     read -p 'Would you like to install the latest versions of update package database. [y/n]: ' upgradePackageDatabase
 fi
 
 
 if [ "$upgradePackageDatabase" == 'y' ] || [ "$upgradePackageDatabase" == 'Y']; then
-    apt-get upgrade
+    apt-get update
 fi
 
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
