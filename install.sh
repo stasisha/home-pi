@@ -4,8 +4,6 @@ source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/b
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/error.sh)";
 source /dev/stdin <<< /etc/os-release;
 
-apt-get update && apt-get upgrade
-
 if [[ "$ID" == "raspbian"* ]]; then
     #fix broken http://fastmirror.pp.ua
     #https://www.raspbian.org/RaspbianMirrors
@@ -21,6 +19,8 @@ else
     echoError "Unsupported OS";
     return 1
 fi
+
+apt-get update && apt-get upgrade
 
 #Docker
 bash -c "$(curl -fsSL https://get.docker.com)"
