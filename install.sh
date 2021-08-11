@@ -11,7 +11,7 @@ if [[ "$ID" == "raspbian"* ]]; then
     local sourcesList="/etc/apt/sources.list"
     mv "${sourcesList}" "${sourcesList}.original.bk"
     touch "/etc/apt/sources.list"
-    addLineIfNotExists "deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian buster main contrib non-free rpi" "${dnsmasqD}/${domainSufix}.conf"
+    addLineIfNotExists "deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian buster main contrib non-free rpi" "${sourcesList}"
 #TODO chech condition debian
 elif [[ "$OSTYPE" == "debian"* ]]; then
     #placeholder
