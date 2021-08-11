@@ -30,7 +30,7 @@ fi
 
 if [  "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' || "$oxfordMirror" == 'y' ] || [ "$oxfordMirror" == 'Y']; then
     apt-get update
-elif
+else
     read -p 'Would you like to install the latest versions of update package database. [y/n]: ' upgradePackageDatabase
 fi
 
