@@ -24,5 +24,5 @@ fi
 apt-get update && apt-get upgrade
 
 #Docker
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/docker.sh"
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-home-assistant.sh"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/docker.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-home-assistant.sh)"
