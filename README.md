@@ -1,4 +1,4 @@
-# home-pi
+# HomePi
 
 Run as root (sudo su):
 ```
