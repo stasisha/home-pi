@@ -2,7 +2,8 @@
 ## add required functions
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/file-edit.sh)";
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/error.sh)";
-source /dev/stdin <<< /etc/os-release;
+
+source /etc/os-release
 
 if [[ "$ID" == "raspbian"* ]]; then
     #fix broken http://fastmirror.pp.ua
