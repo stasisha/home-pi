@@ -53,6 +53,8 @@ fi
 
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
     apt-get upgrade
+    echo "Upgrade completed."
+    echo "Reboot..."
     sudo reboot
 fi
 
