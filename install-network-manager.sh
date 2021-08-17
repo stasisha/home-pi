@@ -15,6 +15,7 @@ apt install network-manager network-manager-gnome
 addLineToBottomIfNotExists "denyinterfaces wlan0" "/etc/dhcpcd.conf"
 
 addLineToBottomIfNotExists "[ifupdown]" "/etc/NetworkManager/NetworkManager.conf"
+removeLine "managed=false" "/etc/NetworkManager/NetworkManager.conf"
 addLineToBottomIfNotExists "managed=true" "/etc/NetworkManager/NetworkManager.conf"
 
 #replace "/etc/NetworkManager/NetworkManager.conf" "plugins=keyfile" "plugins=ifupdown,keyfile"
