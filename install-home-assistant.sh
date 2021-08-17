@@ -7,9 +7,33 @@ if [ "x$(id -u)" != 'x0' ]; then
 fi
 
 # Install needed Home Assistant Supervised dependencies
-apt-get install network-manager apparmor-utils jq -y
+# TODO findout when needReboot
+if ! network-manager -v COMMAND &> /dev/null
+then
+    apt-get install network-manager -y
+    needReboot='y'
+fi
 
-sudo reboot
+if ! apparmor-utils -v COMMAND &> /dev/null
+then
+    apt-get install apparmor-utils -y
+    needReboot='y'
+fi
+
+if ! jq -v COMMAND &> /dev/null
+then
+    apt-get install jq -y
+    needReboot='y'
+fi
+
+if ! docker -v COMMAND &> /dev/null
+then
+    apt-get install docker -y
+fi
+
+if [ "$needReboot" == 'y' ]; then
+    reboot
+fi
 
 cp /etc/network/interfaces /etc/network/interfaces.original.bk
 
