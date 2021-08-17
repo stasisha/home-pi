@@ -7,7 +7,7 @@ if [ "x$(id -u)" != 'x0' ]; then
 fi
 
 # Install needed Home Assistant Supervised dependencies
-sudo apt-get install network-manager apparmor-utils jq -y
+apt-get install network-manager apparmor-utils jq -y
 
 sudo reboot
 
