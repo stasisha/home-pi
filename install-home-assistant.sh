@@ -8,27 +8,22 @@ fi
 
 # Install needed Home Assistant Supervised dependencies
 # TODO findout when needReboot
-if ! network-manager -v COMMAND &> /dev/null
+if ! dpkg -s network-manager &> /dev/null
 then
     apt-get install network-manager -y
     needReboot='y'
 fi
 
-if ! apparmor-utils -v COMMAND &> /dev/null
+if ! dpkg -s apparmor-utils &> /dev/null
 then
     apt-get install apparmor-utils -y
     needReboot='y'
 fi
 
-if ! jq -v COMMAND &> /dev/null
+if ! jq -s apparmor-utils &> /dev/null
 then
     apt-get install jq -y
     needReboot='y'
-fi
-
-if ! docker -v COMMAND &> /dev/null
-then
-    apt-get install docker -y
 fi
 
 if [ "$needReboot" == 'y' ]; then
