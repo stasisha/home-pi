@@ -6,7 +6,7 @@ if [ "x$(id -u)" != 'x0' ]; then
     exit 1
 fi
 
-sudo apt install netfilter-persistent
+apt install netfilter-persistent
 docker run --name raspap -it -d --restart unless-stopped --privileged --network=host -v /sys/fs/cgroup:/sys/fs/cgroup:ro --cap-add SYS_ADMIN jrcichra/raspap-docker
 docker exec -it raspap bash ./setup.sh
 
