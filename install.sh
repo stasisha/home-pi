@@ -16,6 +16,7 @@ source /etc/os-release
 
 read -p 'Would you like to install Docker? [y/n]: ' docker
 read -p 'Would you like to install ctop? [y/n]: ' ctop
+read -p 'Would you like to install networkManager? [y/n]: ' networkManager
 read -p 'Would you like to install RaspAP? [y/n]: ' raspap
 read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
@@ -70,4 +71,9 @@ fi
 if [ "$homeAssistant" == 'y' ] || [ "$homeAssistant" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-home-assistant.sh)"
 fi
+
+if [ "$networkManager" == 'y' ] || [ "$networkManager" == 'Y'  ]; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-network-manager.sh)"
+fi
+
 
