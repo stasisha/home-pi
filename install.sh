@@ -15,7 +15,7 @@ source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/b
 source /etc/os-release
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
 
-if [ "$upgradePackages" != 'y' ] || [ "$upgradePackages" != 'Y' ]; then
+if [ "$upgradePackages" != 'y' ] && [ "$upgradePackages" != 'Y' ]; then
     read -p 'Would you like to install Docker? [y/n]: ' docker
     read -p 'Would you like to install ctop? [y/n]: ' ctop
     read -p 'Would you like to install RaspAP? [y/n]: ' raspap
