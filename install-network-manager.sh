@@ -17,6 +17,7 @@ addLineToBottomIfNotExists "denyinterfaces wlan0" "/etc/dhcpcd.conf"
 addLineToBottomIfNotExists "[ifupdown]" "/etc/NetworkManager/NetworkManager.conf"
 addLineToBottomIfNotExists "managed=true" "/etc/NetworkManager/NetworkManager.conf"
 
-replace "/etc/NetworkManager/NetworkManager.conf" "plugins=keyfile" "plugins=ifupdown,keyfile"
+#replace "/etc/NetworkManager/NetworkManager.conf" "plugins=keyfile" "plugins=ifupdown,keyfile"
+sed -i  -e s/plugins=keyfile/plugins=ifupdown,keyfile/g /etc/NetworkManager/NetworkManager.conf
 
 reboot
