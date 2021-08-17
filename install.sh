@@ -1,4 +1,13 @@
 #!/bin/bash
+
+#!/bin/bash
+
+# Am I root?
+if [ "x$(id -u)" != 'x0' ]; then
+    echo 'Error: this script can only be executed by root'
+    exit 1
+fi
+
 ## add required functions
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/file-edit.sh)";
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/error.sh)";
@@ -36,7 +45,7 @@ else
 fi
 
 
-if [ "$upgradePackageDatabase" == 'y' ] || [ "$upgradePackageDatabase" == 'Y']; then
+if [ "$upgradePackageDatabase" == 'y' || [ "$upgradePackageDatabase" == 'Y']; then
     apt-get update
 fi
 
