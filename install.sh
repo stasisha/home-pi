@@ -47,7 +47,7 @@ else
 fi
 
 
-if [ "$upgradePackageDatabase" == 'y' || [ "$upgradePackageDatabase" == 'Y']; then
+if [ "$upgradePackageDatabase" == 'y' ] || [ "$upgradePackageDatabase" == 'Y']; then
     apt-get update
 fi
 
