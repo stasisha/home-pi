@@ -6,13 +6,19 @@ if [ "x$(id -u)" != 'x0' ]; then
     exit 1
 fi
 
+source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/file-edit.sh)";
+
 apt install netfilter-persistent
 docker run --name raspap -it -d --restart unless-stopped --privileged --network=host -v /sys/fs/cgroup:/sys/fs/cgroup:ro --cap-add SYS_ADMIN jrcichra/raspap-docker
 docker exec -it raspap bash ./setup.sh
 
+# allow internet access 
 curl -K "https://raw.githubusercontent.com/stasisha/home-pi/main/startup-rasp-ap.sh" -o "/etc/init.d/startup-rasp-ap.sh"
 chmod +x /etc/init.d/startup-rasp-ap.sh
 ln -s /etc/init.d/startup-rasp-ap.sh /etc/rc3.d/startup-rasp-ap
 sh ./etc/init.d/startup-rasp-ap.sh
+
+# routing traffic between networks
+addLineToBottomIfNotExists "net.ipv4.conf.all.forwarding=1" "/etc/sysctl.conf"
 
 docker restart raspap
