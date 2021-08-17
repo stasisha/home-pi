@@ -13,13 +13,15 @@ source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/b
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/error.sh)";
 
 source /etc/os-release
-
-read -p 'Would you like to install Docker? [y/n]: ' docker
-read -p 'Would you like to install ctop? [y/n]: ' ctop
-read -p 'Would you like to install networkManager? [y/n]: ' networkManager
-read -p 'Would you like to install RaspAP? [y/n]: ' raspap
-read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
+
+if [ "$upgradePackages" != 'y' ] || [ "$upgradePackages" != 'Y' ]; then
+    read -p 'Would you like to install Docker? [y/n]: ' docker
+    read -p 'Would you like to install ctop? [y/n]: ' ctop
+    read -p 'Would you like to install RaspAP? [y/n]: ' raspap
+    read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
+    read -p 'Would you like to install Network Manager? Reboot required. [y/n]: ' networkManager
+fi
 
 if [[ "$ID" == "raspbian"* ]]; then
     read -p 'Would you like use University of Oxford Mirror? [y/n]: ' oxfordMirror
