@@ -20,10 +20,16 @@ then
     needReboot='y'
 fi
 
-if ! jq -s apparmor-utils &> /dev/null
+if ! dpkg -s jq &> /dev/null
 then
     apt-get install jq -y
     needReboot='y'
+fi
+
+
+if ! dpkg -s docker &> /dev/null
+then
+    apt-get install docker -y
 fi
 
 if [ "$needReboot" == 'y' ]; then
