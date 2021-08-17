@@ -26,7 +26,6 @@ then
     needReboot='y'
 fi
 
-
 if ! dpkg -s docker &> /dev/null
 then
     apt-get install docker -y
