@@ -6,6 +6,7 @@ source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/b
 source /etc/os-release
 
 read -p 'Would you like to install Docker? [y/n]: ' docker
+read -p 'Would you like to install ctop? [y/n]: ' ctop
 read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
 
@@ -42,6 +43,10 @@ fi
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
     apt-get upgrade
     sudo reboot
+fi
+
+if [ "$ctop" == 'y' ] || [ "$ctop" == 'Y'  ]; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-ctop.sh)"
 fi
 
 if [ "$docker" == 'y' ] || [ "$docker" == 'Y'  ]; then
