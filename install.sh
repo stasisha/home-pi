@@ -14,7 +14,8 @@ source /etc/os-release
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
 
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
-    apt-get upgrade
+    apt update
+    apt upgrade
     echo "Upgrade completed."
     echo "Reboot..."
     reboot
@@ -47,20 +48,9 @@ else
     return 1
 fi
 
-if [  "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ] || [ "$oxfordMirror" == 'y' ] || [ "$oxfordMirror" == 'Y' ]; then
-    apt-get update
-else
-    read -p 'Would you like to install the latest versions of update package database. [y/n]: ' upgradePackageDatabase
-fi
-
-
-if [ "$upgradePackageDatabase" == 'y' ] || [ "$upgradePackageDatabase" == 'Y' ]; then
-    apt-get update
-fi
-
-
 if [ "$pavucontrol" == 'y' ] || [ "$pavucontrol" == 'Y' ]; then
-    apt-get install pavucontrol paprefs
+    apt update
+    apt install pavucontrol paprefs
 fi
 
 if [ "$ctop" == 'y' ] || [ "$ctop" == 'Y'  ]; then
