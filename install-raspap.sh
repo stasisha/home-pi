@@ -21,7 +21,7 @@ fi
 if [ "$configureNetwork" == 'y' ] || [ "$configureNetwork" == 'Y'  ]; then
     apt install netfilter-persistent -y
     # allow internet access 
-    curl -K "https://raw.githubusercontent.com/stasisha/home-pi/main/startup-rasp-ap.sh" -o "/etc/init.d/startup-rasp-ap.sh"
+    curl "https://raw.githubusercontent.com/stasisha/home-pi/main/startup-rasp-ap.sh" -o "/etc/init.d/startup-rasp-ap.sh"
     chmod +x /etc/init.d/startup-rasp-ap.sh
     ln -s /etc/init.d/startup-rasp-ap.sh /etc/rc3.d/startup-rasp-ap
     sh ./etc/init.d/startup-rasp-ap.sh
