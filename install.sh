@@ -65,15 +65,15 @@ if [ "$docker" == 'y' ] || [ "$docker" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-docker.sh)"
 fi
 
-if [ "$homeAssistant" == 'y' ] || [ "$homeAssistant" == 'Y'  ]; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-home-assistant.sh)"
-fi
-
 if [ "$networkManager" == 'y' ] || [ "$networkManager" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-network-manager.sh)"
 fi
 
 if [ "$ledFx" == 'y' ] || [ "$ledFx" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-led-fx.sh)"
+fi
+
+if [ "$homeAssistant" == 'y' ] || [ "$homeAssistant" == 'Y'  ]; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-home-assistant.sh)"
 fi
 
