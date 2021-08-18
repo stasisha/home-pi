@@ -55,6 +55,11 @@ else
     return 1
 fi
 
+
+if [ "$raspap" == 'y' ] || [ "$raspap" == 'Y'  ]; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-raspap.sh)"
+fi
+
 if [ "$pavucontrol" == 'y' ] || [ "$pavucontrol" == 'Y' ]; then
     apt update
     apt install pavucontrol paprefs -y
@@ -62,10 +67,6 @@ fi
 
 if [ "$ctop" == 'y' ] || [ "$ctop" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-ctop.sh)"
-fi
-
-if [ "$raspap" == 'y' ] || [ "$raspap" == 'Y'  ]; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-raspap.sh)"
 fi
 
 if [ "$docker" == 'y' ] || [ "$docker" == 'Y'  ]; then
@@ -83,4 +84,5 @@ fi
 if [ "$homeAssistant" == 'y' ] || [ "$homeAssistant" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-home-assistant.sh)"
 fi
+
 
