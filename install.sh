@@ -34,10 +34,10 @@ if [[ "$ID" == "raspbian"* ]]; then
     
     if [ "$oxfordMirror" == 'y' ] || [ "$oxfordMirror" == 'Y' ]; then
         #https://www.raspbian.org/RaspbianMirrors
-        local sourcesList="/etc/apt/sources.list"
-        mv "${sourcesList}" "${sourcesList}.original.bk"
+        sourcesListFile="/etc/apt/sources.list"
+        mv "${sourcesListFile}" "${sourcesListFile}.original.bk"
         touch "/etc/apt/sources.list"
-        addLineToBottomIfNotExists "deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian buster main contrib non-free rpi" "${sourcesList}"
+        addLineToBottomIfNotExists "deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian buster main contrib non-free rpi" "${sourcesListFile}"
     fi
 #TODO check condition debian
 elif [[ "$OSTYPE" == "debian"* ]]; then
@@ -50,7 +50,7 @@ fi
 
 if [ "$pavucontrol" == 'y' ] || [ "$pavucontrol" == 'Y' ]; then
     apt update
-    apt install pavucontrol paprefs
+    apt install pavucontrol paprefs -y
 fi
 
 if [ "$ctop" == 'y' ] || [ "$ctop" == 'Y'  ]; then
