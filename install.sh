@@ -19,7 +19,8 @@ if [ "$upgradePackages" != 'y' ] && [ "$upgradePackages" != 'Y' ]; then
     read -p 'Would you like to install PulseAudio Volume Control? [y/n]: ' pavucontrol
     read -p 'Would you like to install RaspAP? [y/n]: ' raspap
     read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
-    read -p 'Would you like to install Network Manager? Reboot required. [y/n]: ' networkManager
+    read -p 'Would you like to install Network Manager? [y/n]: ' networkManager
+    read -p 'Would you like to install LedFX? [y/n]: ' ledfx
 fi
 
 if [[ "$ID" == "raspbian"* ]]; then
@@ -83,4 +84,7 @@ if [ "$networkManager" == 'y' ] || [ "$networkManager" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-network-manager.sh)"
 fi
 
+if [ "$ledFx" == 'y' ] || [ "$ledFx" == 'Y'  ]; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-led-fx.sh)"
+fi
 
