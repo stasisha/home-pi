@@ -15,7 +15,7 @@ read -p 'Would you like to install the latest versions of all the previously ins
 
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
     apt update
-    apt upgrade
+    apt upgrade -y
     echo "Upgrade completed."
     echo "Reboot..."
     reboot
