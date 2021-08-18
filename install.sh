@@ -85,4 +85,4 @@ if [ "$homeAssistant" == 'y' ] || [ "$homeAssistant" == 'Y'  ]; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-home-assistant.sh)"
 fi
 
-
+echo "All selected applications were installed."
