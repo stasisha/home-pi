@@ -28,7 +28,7 @@ fi
 
 if ! dpkg -s docker &> /dev/null
 then
-    apt-get install docker -y
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-docker.sh)"
 fi
 
 if [ "$needReboot" == 'y' ]; then
