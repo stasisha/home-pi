@@ -10,7 +10,7 @@ fi
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/file-edit.sh)";
 
 apt update
-apt install network-manager network-manager-gnome
+apt install network-manager network-manager-gnome -y
 
 addLineToBottomIfNotExists "denyinterfaces wlan0" "/etc/dhcpcd.conf"
 
