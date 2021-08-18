@@ -28,4 +28,6 @@ if [ "$configureNetwork" == 'y' ] || [ "$configureNetwork" == 'Y'  ]; then
 
     # routing traffic between networks
     addLineToBottomIfNotExists "net.ipv4.conf.all.forwarding=1" "/etc/sysctl.conf"
+    
+    addLineToBottomIfNotExists "country=US" "/etc/wpa_supplicant/wpa_supplicant.conf"
 fi
