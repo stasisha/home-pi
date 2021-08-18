@@ -13,15 +13,20 @@ source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/b
 source /etc/os-release
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
 
-if [ "$upgradePackages" != 'y' ] && [ "$upgradePackages" != 'Y' ]; then
-    read -p 'Would you like to install Docker? [y/n]: ' docker
-    read -p 'Would you like to install ctop? [y/n]: ' ctop
-    read -p 'Would you like to install PulseAudio Volume Control? [y/n]: ' pavucontrol
-    read -p 'Would you like to install RaspAP? [y/n]: ' raspap
-    read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
-    read -p 'Would you like to install Network Manager? [y/n]: ' networkManager
-    read -p 'Would you like to install LedFX? [y/n]: ' ledfx
+if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
+    apt-get upgrade
+    echo "Upgrade completed."
+    echo "Reboot..."
+    reboot
 fi
+ 
+read -p 'Would you like to install Docker? [y/n]: ' docker
+read -p 'Would you like to install ctop? [y/n]: ' ctop
+read -p 'Would you like to install PulseAudio Volume Control? [y/n]: ' pavucontrol
+read -p 'Would you like to install RaspAP? [y/n]: ' raspap
+read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
+read -p 'Would you like to install Network Manager? [y/n]: ' networkManager
+read -p 'Would you like to install LedFX? [y/n]: ' ledfx
 
 if [[ "$ID" == "raspbian"* ]]; then
     read -p 'Would you like use University of Oxford Mirror? [y/n]: ' oxfordMirror
@@ -53,12 +58,6 @@ if [ "$upgradePackageDatabase" == 'y' ] || [ "$upgradePackageDatabase" == 'Y' ];
     apt-get update
 fi
 
-if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
-    apt-get upgrade
-    echo "Upgrade completed."
-    echo "Reboot..."
-    sudo reboot
-fi
 
 if [ "$pavucontrol" == 'y' ] || [ "$pavucontrol" == 'Y' ]; then
     apt-get install pavucontrol paprefs
