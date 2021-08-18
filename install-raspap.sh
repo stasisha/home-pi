@@ -24,7 +24,7 @@ if [ "$configureNetwork" == 'y' ] || [ "$configureNetwork" == 'Y'  ]; then
     curl "https://raw.githubusercontent.com/stasisha/home-pi/main/startup-rasp-ap.sh" -o "/etc/init.d/startup-rasp-ap.sh"
     chmod +x /etc/init.d/startup-rasp-ap.sh
     rm -f /etc/rc3.d/startup-rasp-ap
-    ln -s /etc/init.d/startup-rasp-ap.sh /etc/rc3.d/startup-rasp-ap
+    ln -s /etc/init.d/startup-rasp-ap.sh /etc/rc3.d/S99startup-rasp-ap
     sh /etc/init.d/startup-rasp-ap.sh
 
     # routing traffic between networks
