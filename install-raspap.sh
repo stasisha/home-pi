@@ -31,4 +31,6 @@ if [ "$configureNetwork" == 'y' ] || [ "$configureNetwork" == 'Y'  ]; then
     addLineToBottomIfNotExists "net.ipv4.conf.all.forwarding=1" "/etc/sysctl.conf"
     
     addLineToBottomIfNotExists "country=US" "/etc/wpa_supplicant/wpa_supplicant.conf"
+    
+    nmcli dev set wlan0 managed no
 fi
