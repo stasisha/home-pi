@@ -7,4 +7,4 @@ if [ "x$(id -u)" != 'x0' ]; then
 fi
 
 bash -c "$(curl -fsSL https://get.docker.com)"
-sudo usermod -aG docker $USER
+usermod -aG docker pi
