@@ -14,7 +14,14 @@ source /etc/os-release
 read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
 
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
+
+    # skip additional reboot 
+    read -p 'Would you like to install Home Assistant requirments? [y/n]: ' useHomeAssistant
+
     apt update
+    if [ "$useHomeAssistant" == 'y' ] || [ "$useHomeAssistant" == 'Y' ]; then
+         apt-get install network-manager apparmor-utils jq -y
+    fi
     apt upgrade -y
     echo "Upgrade completed."
     echo "Reboot..."
@@ -24,10 +31,10 @@ fi
 read -p 'Would you like to install Docker? [y/n]: ' docker
 read -p 'Would you like to install ctop? [y/n]: ' ctop
 read -p 'Would you like to install PulseAudio Volume Control? [y/n]: ' pavucontrol
-read -p 'Would you like to install RaspAP? [y/n]: ' raspap
 read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
 read -p 'Would you like to install Network Manager? [y/n]: ' networkManager
 read -p 'Would you like to install LedFX? [y/n]: ' ledfx
+read -p 'Would you like to use RaspAP? [y/n]: ' raspap
 
 if [[ "$ID" == "raspbian"* ]]; then
     read -p 'Would you like use University of Oxford Mirror? [y/n]: ' oxfordMirror
