@@ -18,4 +18,4 @@ addLineToBottomIfNotExists "[ifupdown]" "/etc/NetworkManager/NetworkManager.conf
 removeLine "managed=false" "/etc/NetworkManager/NetworkManager.conf"
 addLineToBottomIfNotExists "managed=true" "/etc/NetworkManager/NetworkManager.conf"
 
-sed -i s/plugins=keyfile/plugins=ifupdown,keyfile/g /etc/NetworkManager/NetworkManager.conf
+sed -i "s/plugins=keyfile/plugins=ifupdown,keyfile/g" "/etc/NetworkManager/NetworkManager.conf"
