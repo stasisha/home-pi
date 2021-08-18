@@ -26,7 +26,7 @@ then
     needReboot='y'
 fi
 
-if ! dpkg -s docker &> /dev/null
+if ! dpkg -s docker-ce &> /dev/null
 then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-docker.sh)"
 fi
