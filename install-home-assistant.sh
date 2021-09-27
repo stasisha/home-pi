@@ -6,6 +6,16 @@ if [ "x$(id -u)" != 'x0' ]; then
     exit 1
 fi
 
+wait-for-it() {
+  printf "Waiting for Home Assistant ready."
+  IP_ADDRESS=$(hostname -I | awk '{ print $1 }')
+  until curl --output /dev/null --silent --head --fail http://"${IP_ADDRESS}":8123; do
+    printf '.'
+    sleep 1
+  done
+}
+
+
 # Install needed Home Assistant Supervised dependencies
 # TODO findout when needReboot
 if ! dpkg -s network-manager &> /dev/null
@@ -40,3 +50,4 @@ cp /etc/network/interfaces /etc/network/interfaces.original.bk
 curl -Lo installer.sh https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh
 bash installer.sh --machine raspberrypi4
 rm -r installer.sh
+wait-for-it()
