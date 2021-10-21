@@ -6,8 +6,8 @@ if [ "x$(id -u)" != 'x0' ]; then
     exit 1
 fi
 
-read -p 'Would you like to install RaspAP (docker)? [y/n]: ' raspapDocker
-read -p 'Would you like to configure network? [y/n]: ' configureNetwork
+read -r -p 'Would you like to install RaspAP (docker)? [y/n]: ' raspapDocker
+read -r -p 'Would you like to configure network? [y/n]: ' configureNetwork
 
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/file-edit.sh)";
 
