@@ -11,7 +11,7 @@ source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/b
 source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/stasisha/bash-utils/master/error.sh)";
 
 source /etc/os-release
-read -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
+read -r -p 'Would you like to install the latest versions of all the previously installed packages. Reboot required. [y/n]: ' upgradePackages
 
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
 
@@ -28,10 +28,10 @@ if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
     reboot
 fi
  
-read -p 'Would you like to install Docker? [y/n]: ' docker
-read -p 'Would you like to install ctop? [y/n]: ' ctop
-read -p 'Would you like to install PulseAudio Volume Control? [y/n]: ' pavucontrol
-read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
+read -r -p 'Would you like to install Docker? [y/n]: ' docker
+read -r -p 'Would you like to install ctop? [y/n]: ' ctop
+read -r -p 'Would you like to install PulseAudio Volume Control? [y/n]: ' pavucontrol
+read -r -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
 
 networkManager=n
 #read -p 'Would you like to install Network Manager? [y/n]: ' networkManager
