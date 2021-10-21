@@ -16,7 +16,7 @@ read -r -p 'Would you like to install the latest versions of all the previously 
 if [ "$upgradePackages" == 'y' ] || [ "$upgradePackages" == 'Y' ]; then
 
     # skip additional reboot 
-    read -p 'Would you like to install Home Assistant requirments? [y/n]: ' useHomeAssistant
+    read -r -p 'Would you like to install Home Assistant requirments? [y/n]: ' useHomeAssistant
 
     apt update
     if [ "$useHomeAssistant" == 'y' ] || [ "$useHomeAssistant" == 'Y' ]; then
@@ -38,10 +38,10 @@ networkManager=n
 ledfx=n
 #read -p 'Would you like to install LedFX? [y/n]: ' ledfx
 
-read -p 'Would you like to use RaspAP? [y/n]: ' raspap
+read -r -p 'Would you like to use RaspAP? [y/n]: ' raspap
 
 if [[ "$ID" == "raspbian"* ]]; then
-    read -p 'Would you like use University of Oxford Mirror? [y/n]: ' oxfordMirror
+    read -r -p 'Would you like use University of Oxford Mirror? [y/n]: ' oxfordMirror
     
     if [ "$oxfordMirror" == 'y' ] || [ "$oxfordMirror" == 'Y' ]; then
         #https://www.raspbian.org/RaspbianMirrors
