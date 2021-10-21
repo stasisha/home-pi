@@ -35,8 +35,8 @@ read -p 'Would you like to install Home Assistant? [y/n]: ' homeAssistant
 
 networkManager="n"
 #read -p 'Would you like to install Network Manager? [y/n]: ' networkManager
-ledfx="n"
-#read -p 'Would you like to install LedFX? [y/n]: ' ledfx
+ledFx="n"
+#read -p 'Would you like to install LedFX? [y/n]: ' ledFx
 
 read -p 'Would you like to use RaspAP? [y/n]: ' raspap
 
