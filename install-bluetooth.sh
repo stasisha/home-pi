@@ -69,7 +69,7 @@ After=bluetooth.service
 ExecStartPre=/usr/bin/bluetoothctl discoverable on
 ExecStartPre=/bin/hciconfig %I piscan
 ExecStartPre=/bin/hciconfig %I sspmode 1
-ExecStart=/usr/bin/bt-agent
+ExecStart=/usr/bin/bt-agent --capability=DisplayOnly
 RestartSec=5
 Restart=always
 KillSignal=SIGUSR1
