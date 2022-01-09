@@ -45,13 +45,12 @@ AutoEnable=true
 EOF
 
 # Password/Pin file
-cat <<'EOF' > /etc/bluetooth/pin.conf
-* 1234
-EOF
+#cat <<'EOF' > /etc/bluetooth/pin.conf
+#* 1234
+#EOF
 
-chown root:root /etc/bluetooth/pin.conf
-chmod 600 /etc/bluetooth/pin.conf
-
+#chown root:root /etc/bluetooth/pin.conf
+#chmod 600 /etc/bluetooth/pin.conf
 
 
 # Make Bluetooth discoverable after initialisation
@@ -70,7 +69,7 @@ After=bluetooth.service
 ExecStartPre=/usr/bin/bluetoothctl discoverable on
 ExecStartPre=/bin/hciconfig %I piscan
 ExecStartPre=/bin/hciconfig %I sspmode 1
-ExecStart=/usr/bin/bt-agent --capability=NoInputNoOutput --pin /etc/bluetooth/pin.conf
+ExecStart=/usr/bin/bt-agent
 RestartSec=5
 Restart=always
 KillSignal=SIGUSR1
