@@ -65,6 +65,7 @@ dpkg -i os-agent_1.2.2_linux_armv7.deb
 # Test os agent
 gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
 
+# Home assistant
 wget https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 dpkg -i homeassistant-supervised.deb
 
