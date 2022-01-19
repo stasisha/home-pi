@@ -36,18 +36,36 @@ then
     needReboot='y'
 fi
 
-if ! dpkg -s docker-ce &> /dev/null
-then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-docker.sh)"
-fi
 
 if [ "$needReboot" == 'y' ]; then
     reboot
 fi
 
-cp /etc/network/interfaces /etc/network/interfaces.original.bk
 
-curl -Lo installer.sh https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh
-bash installer.sh --machine raspberrypi4
-rm -r installer.sh
+# Foolow the instruction https://github.com/home-assistant/supervised-installer
+apt-get install \
+jq \
+wget \
+curl \
+udisks2 \
+libglib2.0-bin \
+network-manager \
+dbus -y
+
+# install docker
+if ! dpkg -s docker-ce &> /dev/null
+then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/stasisha/home-pi/master/install-docker.sh)"
+fi
+
+# OS agent
+wget https://github.com/home-assistant/os-agent/releases/download/1.2.2/os-agent_1.2.2_linux_armv7.deb
+dpkg -i os-agent_1.2.2_linux_armv7.deb
+
+# Test os agent
+gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+
+wget https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+dpkg -i homeassistant-supervised.deb
+
 wait-for-it
