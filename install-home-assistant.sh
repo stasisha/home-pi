@@ -59,8 +59,14 @@ then
 fi
 
 # OS agent
-wget https://github.com/home-assistant/os-agent/releases/download/1.2.2/os-agent_1.2.2_linux_armv7.deb
-dpkg -i os-agent_1.2.2_linux_armv7.deb
+MACHINE_TYPE=`uname -m`
+if [ ${MACHINE_TYPE} == 'armv7l' ]; then
+    wget https://github.com/home-assistant/os-agent/releases/download/1.2.2/os-agent_1.2.2_linux_armv7.deb
+    dpkg -i os-agent_1.2.2_linux_armv7.deb
+else
+    wget https://github.com/home-assistant/os-agent/releases/download/1.2.2/os-agent_1.2.2_linux_aarch64.deb
+    dpkg -i os-agent_1.2.2_linux_aarch64.deb
+fi
 
 # Test os agent
 gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
